@@ -1,0 +1,14 @@
+#!/bin/sh
+green='echo \033[1;32m'
+blue='echo \033[1;36;40m'
+yellow='echo \033[33;40m'
+reset='tput sgr0'
+
+echo "          `$blue` Welcome to `$green``hostname`!
+`$yellow`+---------------------------------------------------+
+|`$yellow` `$blue` Mac OS X version:`$green` `sw_vers | grep 'ProductVersion:' | cut -c 17-30`   `$yellow`|
+|`$blue` Memory:`$green``top -l 1 | head -n 10 | grep PhysMem | cut -c 9-39`Free `hostinfo | grep gigabytes | cut -c 26-33`b Total `$yellow`|
++---------------------------------------------------+
+`$reset`"
+
+

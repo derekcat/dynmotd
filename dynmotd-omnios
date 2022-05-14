@@ -1,0 +1,25 @@
+#!/bin/sh
+green='echo \033[1;32m'
+blue='echo \033[1;36;40m'
+yellow='echo \033[33;40m'
+reset='tput sgr0'
+
+echo "          `$blue` Welcome to `$green``hostname`!
+`$yellow`+------------------------------------------------------------+
+|`$yellow` `$blue` System version:`$green` `uname -sr``cat /etc/release | grep OmniOS`   `$yellow`         |
+|`$blue` Memory:`$green``lgrpinfo 0 | grep Memory | cut -c 9-` `$yellow`         |
+| `$blue`ZFS list: `$green``zfs list dpool rpool | grep NAME``$yellow`           |
+| `$blue`          `$green``zfs list dpool rpool | grep dpool``$yellow`               |
+| `$blue`          `$green``zfs list dpool rpool | grep rpool``$yellow`               |
+| `$blue`zpool status: `$green``zpool status rpool | grep NAME``$yellow`      |
+| `$blue`          `$green``zpool status dpool | grep  dpool | grep -v ":"``$yellow`      |
+| `$blue`          `$green``zpool status dpool | grep raidz1-0``$yellow`      |
+| `$blue`          `$green``zpool status dpool | grep c1t1d0``$yellow`      |
+| `$blue`          `$green``zpool status dpool | grep c1t2d0``$yellow`      |
+| `$blue`          `$green``zpool status dpool | grep c1t3d0``$yellow`      |
+| `$blue`          `$green``zpool status dpool | grep  cache | grep -v ":"``$yellow`					   |
+| `$blue`          `$green``zpool status dpool | grep c3d1``$yellow`      |
+| `$blue`          `$green``zpool status rpool | grep rpool | grep -v ":"``$yellow`      |
+| `$blue`          `$green``zpool status rpool | grep c1t0d0s0``$yellow`      |
++------------------------------------------------------------+
+`$reset`"

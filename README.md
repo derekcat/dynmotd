@@ -1,2 +1,3 @@
-# dynmotd
-Dynamic Message Of The Day files
+Here's my collection of dynmotd (Dynamic Message Of The Day) scripts.
+
+Thanks for looking!
