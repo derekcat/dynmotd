@@ -13,7 +13,7 @@ used_disk="$(df -h | grep "/$" | awk '{print $3}' | cut -d "i" -f1)"
 
 echo "          `$blue` Welcome to `$green``hostname -s`!
 `$yellow`+---------------------------------------------------+
-|`$yellow` `$blue` Mac OS X version:`$green` `sw_vers | grep 'ProductVersion:' | cut -c 17-30`   `$yellow`
+|`$blue` Mac OS X version:`$green` `sw_vers | grep 'ProductVersion:' | cut -c 17-30`   `$yellow`
 |`$blue` Memory: `$green`$free_memory Free, $used_memory Used, ${total_memory}G Total `$yellow`
 |`$blue` Disk: `$green`$free_disk Free, $used_disk Used, $total_disk Total `$yellow`
 +---------------------------------------------------+
