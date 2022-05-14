@@ -4,10 +4,18 @@ blue='echo \033[1;36;40m'
 yellow='echo \033[33;40m'
 reset='tput sgr0'
 
-echo "          `$blue` Welcome to `$green``hostname`!
+free_memory="$(top -l 1 | grep PhysMem | awk '{print $6}')"
+total_memory="$(hostinfo | grep gigabytes | awk '{print $4}' | cut -d "." -f1)"
+used_memory="$(top -l 1 | grep PhysMem | awk '{print $2}')"
+free_disk="$(df -h | grep "/$" | awk '{print $4}' | cut -d "i" -f1)"
+total_disk="$(df -h | grep "/$" | awk '{print $2}' | cut -d "i" -f1)"
+used_disk="$(df -h | grep "/$" | awk '{print $3}' | cut -d "i" -f1)"
+
+echo "          `$blue` Welcome to `$green``hostname -s`!
 `$yellow`+---------------------------------------------------+
-|`$yellow` `$blue` Mac OS X version:`$green` `sw_vers | grep 'ProductVersion:' | cut -c 17-30`   `$yellow`|
-|`$blue` Memory:`$green``top -l 1 | head -n 10 | grep PhysMem | cut -c 9-39`Free `hostinfo | grep gigabytes | cut -c 26-33`b Total `$yellow`|
+|`$yellow` `$blue` Mac OS X version:`$green` `sw_vers | grep 'ProductVersion:' | cut -c 17-30`   `$yellow`
+|`$blue` Memory: `$green`$free_memory Free, $used_memory Used, ${total_memory}G Total `$yellow`
+|`$blue` Disk: `$green`$free_disk Free, $used_disk Used, $total_disk Total `$yellow`
 +---------------------------------------------------+
 `$reset`"
 
